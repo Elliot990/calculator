@@ -1,0 +1,71 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="{% static  'catalog/style.css' %}">
+
+</head>
+
+
+<body>
+   
+<div class="calculator">
+    <input type="text" id="display" >
+    <div class="buttons">
+
+
+    <div><h1><button class="btn" data-value="1">1</button></h1></div>
+    <div><h1><button class="btn" data-value="2">2</button></h1></div>
+    <div><h1><button class="btn" data-value="3">3</button></h1></div>
+    <div><h1><button class="btn" data-value="4">4</button></h1><br><br></div>
+    <div><h1><button class="btn" data-value="5">5</button></h1></div>
+    <div><h1><button class="btn"data-value="6" >6</button></h1></div>
+    <div><h1><button class="btn" data-value="7">7</button></h1></div>
+    <div><h1><button class="btn" data-value="8">8</button></h1></div><br><br>
+    <div><h1><button class="btn" data-value="9">9</button></h1></div>
+    <div><h1><button class="btn" data-value="0">0</button></h1></div>
+    <div><h1><button class="btn" data-value="+">+</button></h1></div>
+    <div><h1><button class="btn" data-value="-">-</button></h1></div><br><br>
+    <div><h1><button class="btn" data-value="*">*</button></h1></div>
+    <div><h1><button class="btn" data-value="/">/</button></h1></div>
+    <div><h1><button class="btn" data-value="=">=</button></h1></div>
+    <button class="btn" id="clear">C</button>
+</div>
+
+
+
+</div>
+
+<script src="{% static  'catalog/script.js' %}">
+    $(document).ready(function() {
+    alert("welcome");
+    var display = $('#display');
+
+    $('.btn').on('click', function() {
+        var value = $(this).data('value');
+        
+        if (value === '=') {
+            try {
+                display.val(eval(display.val()));
+            } catch (e) {
+                display.val('Error');
+            }
+        } else if (value === 'C') {
+            display.val('');
+        } else {
+            display.val(display.val() + value);
+        }
+    });
+
+    $('#clear').on('click', function() {
+        display.val('');
+    });
+});
+
+  </script>
+</body>
+</html>
